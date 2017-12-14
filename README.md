@@ -2,7 +2,7 @@
 
 This repository contains Dockerfile(s) to have a docker image to build assets with gulp, npm, bower, yarn ...
 
-See docker hub image asset-builder
+See docker hub image [zolweb/asset-builder](https://hub.docker.com/r/zolweb/asset-builder/)
 
 See https://nodejs.org/en/download/ to check npm version coming with node
 
@@ -13,7 +13,23 @@ See https://nodejs.org/en/download/ to check npm version coming with node
 ### How to use it : 
 
 ```bash
-docker run --rm --tty --volume $(PWD):/data # Mount your directory
+# NPM install
+docker run --rm --tty \
+    --volume $(PWD):/data \
+    zolweb/asset-builder:1.0 \
+    bash -ci "npm install"
+    
+# Bower install
+docker run --rm --tty \
+    --volume $(PWD):/data \
+    zolweb/asset-builder:1.0 \
+    bash -ci "npm install"
+    
+# Gulp usage
+docker run --rm --tty \
+    --volume $(PWD):/data \
+    zolweb/asset-builder:1.0 \
+    bash -ci "gulp"
 ```
 
 You can use the option `--user` from docker run command to avoid permissions problems on generated files
